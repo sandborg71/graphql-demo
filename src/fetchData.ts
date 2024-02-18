@@ -51,5 +51,4 @@ async function fetchData(): Promise<void> {
   }
 }
 
-// Call the fetchData function to initiate the API request
 await fetchData();
