@@ -1,0 +1,583 @@
+{
+  "uuid": "c95d9f9d-ecf5-4da2-adc9-6c703ceff663",
+  "lastMigration": 32,
+  "name": "Simple Vehicle API",
+  "endpointPrefix": "vehicle",
+  "latency": 200,
+  "port": 1337,
+  "routes": [
+    {
+      "uuid": "eeb054f9-9689-4c56-91af-2288a098a2af",
+      "documentation": "",
+      "method": "get",
+      "endpoint": "list",
+      "responses": [
+        {
+          "uuid": "2f96b3a0-ac42-42f2-b9a6-d0b0203566af",
+          "body": "{\n  \"vehicles\": [\n    {\n      \"name\": \"big truck\",\n      \"id\": \"bd45a676-0d0e-48b4-9693-e8196eb7fcbf\"\n    },\n    {\n      \"name\": \"small truck\",\n      \"id\": \"2337d25f-8917-4e26-920f-ddbe9ba063d6\"\n    },\n    {\n      \"name\": \"niklas' truck\",\n      \"id\": \"f7c8402d-98ca-4728-9c3e-0805c3ecffbb\"\n    },\n    {\n      \"id\": \"6bf12248-3d72-46fa-9d03-fc7176523012\"\n    }\n  ]\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "",
+          "headers": [
+            {
+              "key": "",
+              "value": ""
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true,
+          "databucketID": "",
+          "bodyType": "INLINE",
+          "crudKey": "id",
+          "callbacks": []
+        }
+      ],
+      "responseMode": null,
+      "type": "http"
+    },
+    {
+      "uuid": "a13c9384-ed7c-494a-9a89-7559aa1f46d2",
+      "documentation": "",
+      "method": "get",
+      "endpoint": "info",
+      "responses": [
+        {
+          "uuid": "2ab4f38d-04c3-4044-a2ec-55af67605416",
+          "body": "{\"reason\": \"Query param id missing from request.\"}",
+          "latency": 0,
+          "statusCode": 400,
+          "label": "Id param missing",
+          "headers": [
+            {
+              "key": "",
+              "value": ""
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true,
+          "databucketID": "",
+          "bodyType": "INLINE",
+          "crudKey": "id",
+          "callbacks": []
+        },
+        {
+          "uuid": "e8e0164b-629e-48cf-9498-176cc378fe0f",
+          "body": "{\n  \"msidn\": \"+4678625847\",\n  \"engineStatus\": \"OK\",\n  \"fleet\": \"Thor's Fleet\",\n  \"brand\": \"Volvo Construction Equipment\",\n  \"countryOfOperation\": \"Japan\",\n  \"chassisNumber\": \"000543\",\n  \"cassisSeries\": \"VCE\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Big Truck",
+          "headers": [
+            {
+              "key": "",
+              "value": ""
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [
+            {
+              "target": "query",
+              "modifier": "id",
+              "value": "bd45a676-0d0e-48b4-9693-e8196eb7fcbf",
+              "operator": "equals",
+              "invert": false
+            }
+          ],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false,
+          "databucketID": "",
+          "bodyType": "INLINE",
+          "crudKey": "id",
+          "callbacks": []
+        },
+        {
+          "uuid": "c1dc3fc3-a086-474b-ad30-ab0c46ffdee7",
+          "body": "{\n  \"msidn\": \"+4635489215\",\n  \"engineStatus\": \"DANGER\",\n  \"fleet\": \"Thor's Fleet\",\n  \"brand\": \"Volvo Trucks\",\n  \"countryOfOperation\": \"Mongolia\",\n  \"chassisNumber\": \"954634\",\n  \"cassisSeries\": \"VT\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "Small Truck",
+          "headers": [
+            {
+              "key": "",
+              "value": ""
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [
+            {
+              "target": "query",
+              "modifier": "id",
+              "value": "2337d25f-8917-4e26-920f-ddbe9ba063d6",
+              "operator": "equals",
+              "invert": false
+            }
+          ],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false,
+          "databucketID": "",
+          "bodyType": "INLINE",
+          "crudKey": "id",
+          "callbacks": []
+        },
+        {
+          "uuid": "dbc8c0f1-ee81-4641-a3c4-5f316b33af63",
+          "body": "{}",
+          "latency": 0,
+          "statusCode": 401,
+          "label": "Niklas' truck",
+          "headers": [
+            {
+              "key": "",
+              "value": ""
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [
+            {
+              "target": "query",
+              "modifier": "id",
+              "value": "f7c8402d-98ca-4728-9c3e-0805c3ecffbb",
+              "operator": "equals",
+              "invert": false
+            }
+          ],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false,
+          "databucketID": "",
+          "bodyType": "INLINE",
+          "crudKey": "id",
+          "callbacks": []
+        },
+        {
+          "uuid": "e672a832-e3b3-439c-9695-09680bfbdac1",
+          "body": "{\n  \"msidn\" : \"+467866547\",\n  \"engineStatus\" : \"OK\",\n  \"fleet\" : \"Thor's Fleet\",\n  \"brand\" : \"Volvo Construction Equipment\",\n  \"countryOfOperation\": \"Japan\",\n  \"chassisNumber\" : \"000643\",\n  \"cassisSeries\": \"VCE\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "blank",
+          "headers": [
+            {
+              "key": "",
+              "value": ""
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [
+            {
+              "target": "query",
+              "modifier": "id",
+              "value": "6bf12248-3d72-46fa-9d03-fc7176523012",
+              "operator": "equals",
+              "invert": false
+            }
+          ],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false,
+          "databucketID": "",
+          "bodyType": "INLINE",
+          "crudKey": "id",
+          "callbacks": []
+        },
+        {
+          "uuid": "3c5b9c3a-96e7-45f6-8308-25ea5432a28a",
+          "body": "{}",
+          "latency": 0,
+          "statusCode": 404,
+          "label": "Vehicle Not Found",
+          "headers": [
+            {
+              "key": "",
+              "value": ""
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [
+            {
+              "target": "query",
+              "modifier": "id",
+              "value": "^$|\\s+",
+              "operator": "regex",
+              "invert": false
+            },
+            {
+              "target": "query",
+              "modifier": "id",
+              "value": ".*",
+              "operator": "regex",
+              "invert": false
+            }
+          ],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false,
+          "databucketID": "",
+          "bodyType": "INLINE",
+          "crudKey": "id",
+          "callbacks": []
+        },
+        {
+          "uuid": "cde289e7-5540-4afa-b3d4-a4fbd6b74531",
+          "body": "{}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false,
+          "crudKey": "id",
+          "callbacks": []
+        },
+        {
+          "uuid": "1bb0af6f-ea2a-4f27-93bd-46e3322b1826",
+          "body": "{}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false,
+          "crudKey": "id",
+          "callbacks": []
+        },
+        {
+          "uuid": "97da788a-4cc3-4f80-915a-f9935912da60",
+          "body": "{}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false,
+          "crudKey": "id",
+          "callbacks": []
+        },
+        {
+          "uuid": "beb40b0e-7482-47e6-9849-b6063ee0cce3",
+          "body": "{}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false,
+          "crudKey": "id",
+          "callbacks": []
+        }
+      ],
+      "responseMode": null,
+      "type": "http"
+    },
+    {
+      "uuid": "d8609ba3-7522-4bd2-89b9-26142f934e81",
+      "documentation": "",
+      "method": "get",
+      "endpoint": "services",
+      "responses": [
+        {
+          "uuid": "42f49fc0-a4c8-4a3c-ad69-49f4a9266096",
+          "body": "{\"reason\": \"Query param id missing from request.\"}",
+          "latency": 0,
+          "statusCode": 400,
+          "label": "Id param missing",
+          "headers": [
+            {
+              "key": "",
+              "value": ""
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true,
+          "databucketID": "",
+          "bodyType": "INLINE",
+          "crudKey": "id",
+          "callbacks": []
+        },
+        {
+          "uuid": "da52ae38-1151-4f00-9728-8da76f5708f8",
+          "body": "{\n  \"communicationStatus\": \"ACTIVE\",\n  \"services\": [\n    {\n      \"serviceName\": \"GPS\",\n      \"status\": \"ACTIVE\",\n      \"lastUpdate\" : \"2019-01-01T09:23:05+01:00\"\n    },\n    {\n      \"serviceName\": \"FuelMeasurment\",\n      \"status\": \"DEACTIVATED\",\n      \"lastUpdate\" : \"2019-01-01T09:23:55+01:00\"\n    },\n    {\n      \"serviceName\": \"rsdwl\",\n      \"status\": \"ERROR\",\n      \"reason\": \"Service Activation Failed.\",\n      \"lastUpdate\" : \"2019-01-01T09:22:05+01:00\"\n    },\n    {\n      \"serviceName\": \"REMOTE_CONTROLL\",\n      \"status\": \"ACTIVE\",\n      \"lastUpdate\" : \"2020-09-15T19:22:02+01:00\"\n    },\n    {\n      \"serviceName\": \"management-console\",\n      \"status\": \"ACTIVE\",\n      \"lastUpdate\" : \"2020-09-15T19:22:02+01:00\"\n    },\n    {\n      \"serviceName\": \"fleetAdminAdvanced\",\n      \"status\": \"ACTIVE\",\n      \"lastUpdate\" : \"2020-01-16T10:21:22+01:00\"\n    }\n  ]\n}\n\n",
+          "latency": 3000,
+          "statusCode": 200,
+          "label": "Big Truck",
+          "headers": [
+            {
+              "key": "",
+              "value": ""
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [
+            {
+              "target": "query",
+              "modifier": "id",
+              "value": "bd45a676-0d0e-48b4-9693-e8196eb7fcbf",
+              "operator": "equals",
+              "invert": false
+            }
+          ],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false,
+          "databucketID": "",
+          "bodyType": "INLINE",
+          "crudKey": "id",
+          "callbacks": []
+        },
+        {
+          "uuid": "a521359a-dca3-4b67-8c69-770733aeb361",
+          "body": "{\n  \"communicationStatus\": \"ACTIVE\",\n  \"services\": [\n    {\n      \"serviceName\": \"GPS\",\n      \"status\": \"ACTIVE\",\n      \"lastUpdate\" : \"2020-07-16T19:20:30+01:00\"\n    },\n    {\n      \"serviceName\": \"FuelMeasurment\",\n      \"status\": \"ACTIVE\",\n      \"lastUpdate\" : \"2020-07-21T10:02:31+01:00\"\n    },\n    {\n      \"serviceName\": \"rsdwl\",\n      \"status\": \"ACTIVE\",\n      \"lastUpdate\" : \"2020-09-15T19:22:02+01:00\"\n    },\n    {\n      \"serviceName\": \"REMOTE_CONTROLL\",\n      \"status\": \"ACTIVE\",\n      \"lastUpdate\" : \"2020-09-15T19:22:02+01:00\"\n    },\n    {\n      \"serviceName\": \"management-console\",\n      \"status\": \"ACTIVE\",\n      \"lastUpdate\" : \"2020-09-15T19:22:02+01:00\"\n    },\n    {\n      \"serviceName\": \"fleetAdminAdvanced\",\n      \"status\": \"ACTIVE\",\n      \"lastUpdate\" : \"2020-01-16T10:21:22+01:00\"\n    }\n  ]\n}\n\n",
+          "latency": 2000,
+          "statusCode": 200,
+          "label": "Small Truck",
+          "headers": [
+            {
+              "key": "",
+              "value": ""
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [
+            {
+              "target": "query",
+              "modifier": "id",
+              "value": "2337d25f-8917-4e26-920f-ddbe9ba063d6",
+              "operator": "equals",
+              "invert": false
+            }
+          ],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false,
+          "databucketID": "",
+          "bodyType": "INLINE",
+          "crudKey": "id",
+          "callbacks": []
+        },
+        {
+          "uuid": "67fc56fe-1ec0-40dc-b25d-538339ecbaa8",
+          "body": "{}",
+          "latency": 6000,
+          "statusCode": 401,
+          "label": "Niklas' truck",
+          "headers": [
+            {
+              "key": "",
+              "value": ""
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [
+            {
+              "target": "query",
+              "modifier": "id",
+              "value": "f7c8402d-98ca-4728-9c3e-0805c3ecffbb",
+              "operator": "equals",
+              "invert": false
+            }
+          ],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false,
+          "databucketID": "",
+          "bodyType": "INLINE",
+          "crudKey": "id",
+          "callbacks": []
+        },
+        {
+          "uuid": "da424b80-9a23-45a9-837e-5d63070b0138",
+          "body": "{\n    \"communicationStatus\": \"DEACTIVATED\"\n}",
+          "latency": 1000,
+          "statusCode": 200,
+          "label": "blank",
+          "headers": [
+            {
+              "key": "",
+              "value": ""
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [
+            {
+              "target": "query",
+              "modifier": "id",
+              "value": "6bf12248-3d72-46fa-9d03-fc7176523012",
+              "operator": "equals",
+              "invert": false
+            }
+          ],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false,
+          "databucketID": "",
+          "bodyType": "INLINE",
+          "crudKey": "id",
+          "callbacks": []
+        },
+        {
+          "uuid": "433b314b-61bf-425f-b594-ed27daab4b9e",
+          "body": "{}",
+          "latency": 0,
+          "statusCode": 404,
+          "label": "vehicle not found",
+          "headers": [
+            {
+              "key": "",
+              "value": ""
+            }
+          ],
+          "filePath": "",
+          "sendFileAsBody": false,
+          "rules": [
+            {
+              "target": "query",
+              "modifier": "id",
+              "value": "^$|\\s+",
+              "operator": "regex",
+              "invert": false
+            },
+            {
+              "target": "query",
+              "modifier": "id",
+              "value": ".*",
+              "operator": "regex",
+              "invert": false
+            }
+          ],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false,
+          "databucketID": "",
+          "bodyType": "INLINE",
+          "crudKey": "id",
+          "callbacks": []
+        }
+      ],
+      "responseMode": null,
+      "type": "http"
+    }
+  ],
+  "proxyMode": false,
+  "proxyHost": "",
+  "cors": true,
+  "headers": [
+    {
+      "key": "Content-Type",
+      "value": "application/json"
+    },
+    {
+      "key": "Access-Control-Allow-Origin",
+      "value": "*"
+    },
+    {
+      "key": "Access-Control-Allow-Methods",
+      "value": "GET,POST,PUT,PATCH,DELETE,HEAD,OPTIONS"
+    },
+    {
+      "key": "Access-Control-Allow-Headers",
+      "value": "Content-Type, Origin, Accept, Authorization, Content-Length, X-Requested-With"
+    }
+  ],
+  "proxyReqHeaders": [
+    {
+      "key": "",
+      "value": ""
+    }
+  ],
+  "proxyResHeaders": [
+    {
+      "key": "",
+      "value": ""
+    }
+  ],
+  "proxyRemovePrefix": false,
+  "hostname": "",
+  "tlsOptions": {
+    "enabled": false,
+    "type": "CERT",
+    "pfxPath": "",
+    "certPath": "",
+    "keyPath": "",
+    "caPath": "",
+    "passphrase": ""
+  },
+  "data": [],
+  "folders": [],
+  "rootChildren": [
+    {
+      "type": "route",
+      "uuid": "eeb054f9-9689-4c56-91af-2288a098a2af"
+    },
+    {
+      "type": "route",
+      "uuid": "a13c9384-ed7c-494a-9a89-7559aa1f46d2"
+    },
+    {
+      "type": "route",
+      "uuid": "d8609ba3-7522-4bd2-89b9-26142f934e81"
+    }
+  ],
+  "callbacks": []
+}
