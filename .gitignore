@@ -29,6 +29,6 @@ build/
 # Misc
 .DS_Store
 
-apidata/~$Code assignment.pptx
-
 database/vehicles.db
+
+apidata/Code_assignment.pptx
